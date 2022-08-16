@@ -1,0 +1,38 @@
+.filter .filter_select .select__modal label .checkbox {
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  height: 1.5rem;
+  z-index: 1;
+  width: 1.5rem;
+  margin-right: 1rem;
+  position: relative;
+  border-radius: 0.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}  
+.filter .filter_select .select__modal label .checkbox::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}  
+.filter .filter_select .select__modal label .checkbox:hover {
+  border-color: black;
+}
+.filter .filter_select .select__modal label input:checked ~ .checkbox {
+  background-color: rgb(125, 213, 0);
+}
+.filter .filter_select .select__modal label input:checked ~ .checkbox::after {
+  display: flex;
+}
+.filter .filter_select .select__modal label input:checked ~ .checkbox:hover {
+  border-color: rgba(0, 0, 0, 0.6);
+}

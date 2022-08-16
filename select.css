@@ -1,0 +1,47 @@
+.filter .filter_select {
+  position: relative;
+}
+
+.filter .filter_select .select__input {
+  box-shadow: 0 0 0 3px transparent;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+
+  padding: 1rem;
+  border-radius: 0.4rem;
+  width: fit-content;
+  cursor: pointer;
+  max-width: 20rem;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+.filter .filter_select .select__input:hover {
+  border-color: black;
+}
+
+.filter .filter_select .select__input:focus {
+  box-shadow: 0 0 0 3px rgb(125, 213, 0);
+  border-color: transparent;
+}
+
+.filter .filter_select .select__input span {
+  margin-right: 3rem;
+}
+
+/* CHANGE IN PROD - START */
+.filter .filter_select .select__input .arrow {
+  transform-origin: center;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg) translate(0%, -50%);
+  transition: transform 0.3s;
+}
+
+.filter .filter_select .select__input.active .arrow {
+  transform: rotate(-135deg) translate(-50%, 0%);
+}
+/* CHANGE IN PROD - END */

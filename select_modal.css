@@ -1,0 +1,61 @@
+.filter .filter_select .select__wrapper_modal {
+  display: none;
+  position: absolute;
+  width: max-content;
+  max-width: 20rem;
+  max-height: 10rem;
+  z-index: 1;
+  top: 4rem;
+  left: 0;
+  border-radius: 0.4rem;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+.filter .filter_select .select__input.active ~ .select__wrapper_modal {
+  display: block;
+}
+.filter .filter_select .select__wrapper_modal::after,
+.filter .filter_select .select__wrapper_modal::before{
+  content: '';
+  position: absolute;
+  left: 2px;
+  width: calc(100% - 1.2rem - 2px);
+  z-index: 3;
+  height: 2rem;
+}
+
+.filter .filter_select .select__wrapper_modal::after{
+  top: -2rem;
+  border-top-left-radius: 2rem;
+  box-shadow: 0 1rem 5px white;
+}
+.filter .filter_select .select__wrapper_modal::before {
+  bottom: -2rem;
+  border-bottom-left-radius: 2rem;
+  box-shadow: 0 -1rem 5px white;
+}
+
+.filter .filter_select .select__modal {
+  background-color: white;
+  max-height: inherit;
+  padding: 1rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden auto;
+}
+
+
+#filter_select_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  display: none;
+}
+#filter_select_overlay.active {
+  display: block;
+}

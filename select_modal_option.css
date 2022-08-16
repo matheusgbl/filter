@@ -1,0 +1,15 @@
+.filter .filter_select .select__modal label {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  margin: 0.5rem 0;
+}
+.filter .filter_select .select__modal label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
