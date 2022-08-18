@@ -1,17 +1,21 @@
 const selects = document.querySelectorAll("#filter_select")
-const overlay = document.querySelector("#filter_select_overlay")
+
+window.onclick = (ev) => {
+  if(!ev.target.matches('#filter_select') && !ev.target.closest('.filter_select')){
+    selects.forEach((select) => {
+      select.classList.remove('active')
+    })
+  }
+}
 
 selects.forEach((select) => {
   select.addEventListener('click', (ev) => {
-    ev.currentTarget.classList.toggle('active')
-    overlay.classList.toggle('active')
+    selects.forEach(selectElement => selectElement.classList.remove('active'))
+    ev.currentTarget.classList.add('active')
   })
 })
-overlay.addEventListener('click', () => {
-  const selectsActive = document.querySelectorAll("#filter_select.active")
-  selectsActive.forEach((select) => select.classList.remove('active'))
-  overlay.classList.remove('active')
-})
+
+
 // -------------------------------------------------------------------------- //
 
 
@@ -23,6 +27,7 @@ function displayCourse(course) {
   const container = document.createElement("li")
   const title = document.createElement("h1")
   const schoolarshipLevel = document.createElement("span")
+
 
   title.classList.add('title_course')
   schoolarshipLevel.classList.add('schoolarshipLevel')
@@ -38,7 +43,8 @@ function displayCourse(course) {
 async function handleChange() {
   const data = await api.get()
   courseContainer.innerHTML = ''
-  const filteredData = data.filter((course) => keysChecked.has(course.key))
+  const filteredData = data.filter((course) => keysChecked.has(course.schoolarshipLevel) || keysChecked.has(course.macroArea) || keysChecked.has(course.difficultyLevel))
+  console.log(filteredData)
   if(filteredData.length){
     filteredData.forEach((course) =>{
       displayCourse(course)
@@ -56,9 +62,9 @@ selectsContainer.forEach((selectContainer) => {
     selectCheckbox.addEventListener('input', (ev) => {
       const isChecked = ev.currentTarget.checked
       if (isChecked) {
-        keysChecked.add(ev.currentTarget.id)
+        keysChecked.add(ev.currentTarget.getAttribute('data-id'))
       } else {
-        keysChecked.delete(ev.currentTarget.id)
+        keysChecked.delete(ev.currentTarget.getAttribute('data-id'))
       }
       handleChange()
     })

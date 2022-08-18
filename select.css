@@ -1,3 +1,13 @@
+.filters{
+  max-width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: start;
+  padding: 2rem 0;
+  gap: 1rem;
+  margin: 0 2rem;
+}
+
 .filter .filter_select {
   position: relative;
 }
@@ -11,7 +21,6 @@
   width: fit-content;
   cursor: pointer;
   max-width: 20rem;
-
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden;

@@ -13,3 +13,10 @@
   height: 0;
   width: 0;
 }
+
+.filter .filter_select .select__modal label span:last-child{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+    max-width: 90%;
+}

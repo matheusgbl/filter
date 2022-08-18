@@ -9,6 +9,7 @@
   position: relative;
   border-radius: 0.2rem;
   border: 1px solid rgba(0, 0, 0, 0.4);
+  flex: 0 0 1.5rem;
 }  
 .filter .filter_select .select__modal label .checkbox::after {
   content: "";
