@@ -15,7 +15,6 @@
 .filter .filter_select .select__input {
   box-shadow: 0 0 0 3px transparent;
   border: 2px solid rgba(0, 0, 0, 0.4);
-
   padding: 1rem;
   border-radius: 0.4rem;
   width: fit-content;

@@ -21,9 +21,17 @@ selects.forEach((select) => {
 
 const selectsContainer = document.querySelectorAll("#select_container")
 const courseContainer = document.querySelector("#course_container")
-const keysChecked = new Set([])
+const keysChecked = {
+  courseType: [],
+  schoolarshipLevel: [],
+  difficultyLevel: [],
+  macroArea: []
+}
 
-function displayCourse(course) {
+let data = []
+let searchKey = ''
+
+function createCourseElement(course) {
   const container = document.createElement("li")
   const title = document.createElement("h1")
   const schoolarshipLevel = document.createElement("span")
@@ -31,6 +39,8 @@ function displayCourse(course) {
 
   title.classList.add('title_course')
   schoolarshipLevel.classList.add('schoolarshipLevel')
+  container.setAttribute('data-id', 'course-' + course.id)
+  container.style.display = 'block'
   
   title.textContent = course.title
   schoolarshipLevel.textContent = course.schoolarshipLevel
@@ -40,18 +50,72 @@ function displayCourse(course) {
   courseContainer.appendChild(container)
 }
 
-async function handleChange() {
-  const data = await api.get()
-  courseContainer.innerHTML = ''
-  const filteredData = data.filter((course) => keysChecked.has(course.schoolarshipLevel) || keysChecked.has(course.macroArea) || keysChecked.has(course.difficultyLevel))
-  console.log(filteredData)
-  if(filteredData.length){
-    filteredData.forEach((course) =>{
-      displayCourse(course)
+api.get().then((res) => {
+  data = JSON.parse(res)
+  data.forEach((course) => {
+    createCourseElement(course);
+  })
+})
+ 
+let hiddenCourse = []
+
+function isCourse(courseKey, key, course) {
+  if (key.length) {
+    var isHidden = true;
+
+    for (var i = 0; i < key.length; i++) {
+      var filter = key[i];
+
+      if (filter.includes(courseKey)) {
+        isHidden = false;
+        break;
+      }
+    }
+
+    if (isHidden) {
+      hiddenCourse.push(course);
+    }
+  }
+}
+
+function handleCourse(id, isHidden){
+  const elementId = `[data-id="course-${id}"]`
+  courseContainer.querySelector(elementId).style.display = isHidden ? 'none' : 'block'
+}
+
+function search(text, key){
+  return text.toLowerCase().includes(key.toLowerCase())
+}
+
+async function handleChange(value) {
+  hiddenCourse = []
+
+  data.forEach((course) => {    
+    isCourse(course.courseType, keysChecked.courseType, course)
+    isCourse(course.difficultyLevel, keysChecked.difficultyLevel, course)
+    isCourse(course.macroArea, keysChecked.macroArea, course)
+    isCourse(course.schoolarshipLevel, keysChecked.schoolarshipLevel, course)
+  })
+
+  const filteredData = data.filter((course) => !hiddenCourse.includes(course))
+  hiddenCourse.forEach((course) => {
+    handleCourse(course.id, true)
+  })
+  if (value){
+    const searchFilterData = filteredData.length ? filteredData.filter((course) => {
+      return search(JSON.stringify(course), value)
+    }) : data.filter((course) => {
+      return search(JSON.stringify(course), value)
     })
-  }else{
-    data.forEach((course) => {
-      displayCourse(course)
+    filteredData?.forEach((course) => {
+      handleCourse(course.id, true)
+    })
+    searchFilterData.forEach((course) =>{
+      handleCourse(course.id)
+    })
+  } else if (filteredData.length) {
+    filteredData.forEach((course) =>{
+      handleCourse(course.id)
     })
   }
 }
@@ -62,13 +126,28 @@ selectsContainer.forEach((selectContainer) => {
     selectCheckbox.addEventListener('input', (ev) => {
       const isChecked = ev.currentTarget.checked
       if (isChecked) {
-        keysChecked.add(ev.currentTarget.getAttribute('data-id'))
+        keysChecked[ev.currentTarget.getAttribute('data-key')].push(ev.currentTarget.getAttribute('data-value'))
       } else {
-        keysChecked.delete(ev.currentTarget.getAttribute('data-id'))
+        keysChecked[ev.currentTarget.getAttribute('data-key')] = 
+          keysChecked[ev.currentTarget.getAttribute('data-key')]
+            .filter((key) => 
+              key !== ev.currentTarget.getAttribute('data-value')
+            )
       }
-      handleChange()
+      handleChange(searchKey)
     })
   })
 })
 
 handleChange();
+
+
+// ---------------------------- SEARCH COURSE AREA------------------------- //
+
+const searchInput = document.querySelector("[data-search]")
+
+searchInput.addEventListener("input", (event) => {
+  const value = event.target.value
+  searchKey = value
+  handleChange(searchKey)
+})
