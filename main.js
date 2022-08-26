@@ -1,3 +1,5 @@
+// --------------------------------- add and remove class ---------------------- //
+
 const selects = document.querySelectorAll("#filter_select")
 
 window.onclick = (ev) => {
@@ -17,7 +19,6 @@ selects.forEach((select) => {
 
 
 // -------------------------------------------------------------------------- //
-
 
 const selectsContainer = document.querySelectorAll("#select_container")
 const courseContainer = document.querySelector("#course_container")
@@ -49,6 +50,14 @@ function createCourseElement(course) {
   container.appendChild(schoolarshipLevel)
   courseContainer.appendChild(container)
 }
+
+// function createActivedContainer(activedItem){
+//   const container = document.createElement("li")
+//   const button = document.createElement("button")
+
+//   container.classList.add()
+  
+// }
 
 api.get().then((res) => {
   data = JSON.parse(res)
@@ -146,8 +155,47 @@ handleChange();
 
 const searchInput = document.querySelector("[data-search]")
 
-searchInput.addEventListener("input", (event) => {
+searchInput.addEventListener("keypress", (event) => {
+  if (event.key === 'Enter'){
   const value = event.target.value
   searchKey = value
-  handleChange(searchKey)
+  searchButton(searchKey)
+  }
 })
+
+function searchButton(){
+  const value = searchInput.value
+  if(value === ''){
+    alert('digite um valor')
+  }
+  hiddenCourse = []
+
+  data.forEach((course) => {    
+    isCourse(course.courseType, keysChecked.courseType, course)
+    isCourse(course.difficultyLevel, keysChecked.difficultyLevel, course)
+    isCourse(course.macroArea, keysChecked.macroArea, course)
+    isCourse(course.schoolarshipLevel, keysChecked.schoolarshipLevel, course)
+  })
+
+  const filteredData = data.filter((course) => !hiddenCourse.includes(course))
+  hiddenCourse.forEach((course) => {
+    handleCourse(course.id, true)
+  })
+  if (value){
+    const searchFilterData = filteredData.length ? filteredData.filter((course) => {
+      return search(JSON.stringify(course), value)
+    }) : data.filter((course) => {
+      return search(JSON.stringify(course), value)
+    })
+    filteredData?.forEach((course) => {
+      handleCourse(course.id, true)
+    })
+    searchFilterData.forEach((course) =>{
+      handleCourse(course.id)
+    })
+  } else if (filteredData.length) {
+    filteredData.forEach((course) =>{
+      handleCourse(course.id)
+    })
+  }
+}

@@ -9,10 +9,13 @@
   </head>
   <body>
     <section class="search">
-      <div class="search-wrapper">
-        <label for="search">Encontre seu Curso</label>
-        <input type="search" id="search" data-search>
-      </div>
+        <label id="search-label" for="search-label"> Digite uma Palavra Chave</label>
+        <div class="search-input">
+          <input type="search" id="search" data-search>
+          <button class="btn-search" onclick="searchButton()">
+            <img src="https://igtieadstorage.blob.core.windows.net/repositorio-imagens/icons8-pesquisar.svg" alt="">
+          </button>
+        </div>
     </section>
     <section class="filters">
       <div class="filter">
@@ -57,6 +60,125 @@
                     <input type="checkbox" data-key="courseType" data-value="Cursos rápidos" id="fast_courses">
                     <span class="checkbox"></span>
                     <span>Cursos rápidos</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>       
+        </div>
+      </div>
+      <div class="filter">
+        <div class="filter_select" id="select_container">
+          <div class="select__input" id="filter_select" tabindex="0">
+            <span>Macroáreas</span>
+            <i class="arrow"></i>
+          </div>
+          <div class="select__wrapper_modal">
+            <div class="select__modal">
+              <ul>
+                <li>
+                  <label for="agile">
+                    <input type="checkbox" data-value="Agile" data-key="macroArea" id="agile">
+                    <span class="checkbox"></span>
+                    <span>Agile</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="Ciberseguranca">
+                    <input type="checkbox" data-value="Cibersegurança" data-key="macroArea" id="Ciberseguranca">
+                    <span class="checkbox"></span>
+                    <span>Cibersegurança</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="cloudComputing">
+                    <input type="checkbox" data-value="Cloud Computing" data-key="macroArea" id="cloudComputing">
+                    <span class="checkbox"></span>
+                    <span>Cloud Computing</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="dataScience">
+                    <input type="checkbox" data-value="Data Science" data-key="macroArea" id="dataScience">
+                    <span class="checkbox"></span>
+                    <span>Data Science</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="Development">
+                    <input type="checkbox" data-value="Development" data-key="macroArea" id="Development">
+                    <span class="checkbox"></span>
+                    <span>Development</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="experienciaSucessoCliente">
+                    <input type="checkbox" data-value="Experiência do Cliente" data-key="macroArea" id="experienciaSucessoCliente">
+                    <span class="checkbox"></span>
+                    <span>Experiência do Cliente</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="financas">
+                    <input type="checkbox" data-value="Finanças" data-key="macroArea" id="financas">
+                    <span class="checkbox"></span>
+                    <span>Finanças</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="gestaoTI">
+                    <input type="checkbox" data-value="Gestão de TI" data-key="macroArea" id="gestaoTI">
+                    <span class="checkbox"></span>
+                    <span>Gestão de TI</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="inteligenciaArticial">
+                    <input type="checkbox" data-value="Inteligência Artificial" data-key="macroArea" id="inteligenciaArticial">
+                    <span class="checkbox"></span>
+                    <span>Inteligência Artificial</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="transformacaoDigital">
+                    <input type="checkbox" data-value="Transformação Digital" data-key="macroArea" id="transformacaoDigital">
+                    <span class="checkbox"></span>
+                    <span>Transformação Digital</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="userExperience">
+                    <input type="checkbox" data-value="User Experience" data-key="macroArea" id="userExperience">
+                    <span class="checkbox"></span>
+                    <span>User Experience</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="gestaoNegocios">
+                    <input type="checkbox" data-value="Gestão de negócios" data-key="macroArea" id="gestaoNegocios">
+                    <span class="checkbox"></span>
+                    <span>Gestão de negócios</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="educacaoFinanceira">
+                    <input type="checkbox" data-value="Educação Financeira" data-key="macroArea" id="educacaoFinanceira">
+                    <span class="checkbox"></span>
+                    <span>Educação Financeira</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="Investimentos">
+                    <input type="checkbox" data-value="Investimentos" data-key="macroArea" id="Investimentos">
+                    <span class="checkbox"></span>
+                    <span>Investimentos</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="trading">
+                    <input type="checkbox" data-value="Trading" data-key="macroArea" id="trading">
+                    <span class="checkbox"></span>
+                    <span>Trading</span>
                   </label>
                 </li>
               </ul>
@@ -134,7 +256,7 @@
                 <label for="m">
                   <input type="checkbox" data-key="schoolarshipLevel" data-value="Mestrado" id="m">
                   <span class="checkbox"></span>
-                  <span>Mestrado</span>
+                  <span>Mestrado/Doutorado/PHD</span>
                 </label>
               </li>
             </ul>
@@ -177,145 +299,17 @@
         </div>
       </div>
     </div>
-    <div class="filter">
-      <div class="filter_select" id="select_container">
-        <div class="select__input" id="filter_select" tabindex="0">
-          <span>Macroáreas</span>
-          <i class="arrow"></i>
-        </div>
-        <div class="select__wrapper_modal">
-          <div class="select__modal">
-            <ul>
-              <li>
-                <label for="Iniciante">
-                  <input type="checkbox" data-value="Iniciante" data-key="macroArea" id="Iniciante">
-                  <span class="checkbox"></span>
-                  <span>Iniciante</span>
-                </label>
-              </li>
-              <li>
-                <label for="gestaoAgil">
-                  <input type="checkbox" data-value="Gestão ágil" data-key="macroArea" id="gestaoAgil">
-                  <span class="checkbox"></span>
-                  <span>Gestão ágil</span>
-                </label>
-              </li>
-              <li>
-                <label for="ciberseguranca">
-                  <input type="checkbox" data-value="Cibersegurança" data-key="macroArea" id="ciberseguranca">
-                  <span class="checkbox"></span>
-                  <span>Cibersegurança</span>
-                </label>
-              </li>
-              <li>
-                <label for="cloudComputing">
-                  <input type="checkbox" data-value="Computação em Nuvem (Cloud Computing)" data-key="macroArea" id="cloudComputing">
-                  <span class="checkbox"></span>
-                  <span>Computação em Nuvem (Cloud Computing)</span>
-                </label>
-              </li>
-              <li>
-                <label for="dataScience">
-                  <input type="checkbox" data-value="Ciência de Dados (Data science)" data-key="macroArea" id="dataScience">
-                  <span class="checkbox"></span>
-                  <span>Ciência de Dados (Data science)</span>
-                </label>
-              </li>
-              <li>
-                <label for="Development">
-                  <input type="checkbox" data-value="Development" data-key="macroArea" id="Development">
-                  <span class="checkbox"></span>
-                  <span>Development</span>
-                </label>
-              </li>
-              <li>
-                <label for="experienciaSucessoCliente">
-                  <input type="checkbox" data-value="Experiência sucesso do cliente (CX)" data-key="macroArea" id="experienciaSucessoCliente">
-                  <span class="checkbox"></span>
-                  <span>Experiência sucesso do cliente (CX)</span>
-                </label>
-              </li>
-              <li>
-                <label for="gestaoTI">
-                  <input type="checkbox" data-value="Gestão de TI" data-key="macroArea" id="gestaoTI">
-                  <span class="checkbox"></span>
-                  <span>Gestão de TI</span>
-                </label>
-              </li>
-              <li>
-                <label for="inteligenciaArticial">
-                  <input type="checkbox" data-value="Inteligência Artificial" data-key="macroArea" id="inteligenciaArticial">
-                  <span class="checkbox"></span>
-                  <span>Inteligência Artificial</span>
-                </label>
-              </li>
-              <li>
-                <label for="InovacaoTransformacaoDigital">
-                  <input type="checkbox" data-value="Inovação e Transformação Digital" data-key="macroArea" id="InovacaoTransformacaoDigital">
-                  <span class="checkbox"></span>
-                  <span>Inovação e Transformação Digital</span>
-                </label>
-              </li>
-              <li>
-                <label for="UX">
-                  <input type="checkbox" data-value="Experiência do Usuário (UX)" data-key="macroArea" id="UX">
-                  <span class="checkbox"></span>
-                  <span>Experiência do Usuário (UX)</span>
-                </label>
-              </li>
-              <li>
-                <label for="empreendedorismo">
-                  <input type="checkbox" data-value="Empreendedorismo" data-key="macroArea" id="empreendedorismo">
-                  <span class="checkbox"></span>
-                  <span>Empreendedorismo</span>
-                </label>
-              </li>
-              <li>
-                <label for="gestaoNegocios">
-                  <input type="checkbox" data-value="Gestão de negócios" data-key="macroArea" id="gestaoNegocios">
-                  <span class="checkbox"></span>
-                  <span>Gestão de negócios</span>
-                </label>
-              </li>
-              <li>
-                <label for="educacaoFinanceira">
-                  <input type="checkbox" data-value="Educação Financeira" data-key="macroArea" id="educacaoFinanceira">
-                  <span class="checkbox"></span>
-                  <span>Educação Financeira</span>
-                </label>
-              </li>
-              <li>
-                <label for="Investimentos">
-                  <input type="checkbox" data-value="Investimentos" data-key="macroArea" id="Investimentos">
-                  <span class="checkbox"></span>
-                  <span>Investimentos</span>
-                </label>
-              </li>
-              <li>
-                <label for="criptomoedas">
-                  <input type="checkbox" data-value="Criptomoedas" data-key="macroArea" id="criptomoedas">
-                  <span class="checkbox"></span>
-                  <span>Criptomoedas</span>
-                </label>
-              </li>
-              <li>
-                <label for="trading">
-                  <input type="checkbox" data-value="Trading" data-key="macroArea" id="trading">
-                  <span class="checkbox"></span>
-                  <span>Trading</span>
-                </label>
-              </li>
-            </ul>
-          </div>
-        </div>       
-      </div>
-    </div>
+  </section>
+  <section class="filter_active_container">
+    <ul class="actived_container">
+      <li>
+      </li>
+    </ul>
   </section>
     <div class="courses_container">
       <ul id="course_container">
       </ul>
     </div>
-
     <script src="api.js"></script>
     <script src="main.js"></script>
   </body>
