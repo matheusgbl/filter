@@ -26,7 +26,8 @@ const keysChecked = {
   courseType: [],
   schoolarshipLevel: [],
   difficultyLevel: [],
-  macroArea: []
+  macroArea: [],
+  careerObjective: []
 }
 
 let data = []
@@ -75,7 +76,15 @@ function isCourse(courseKey, key, course) {
     for (var i = 0; i < key.length; i++) {
       var filter = key[i];
 
-      if (filter.includes(courseKey)) {
+      if(Array.isArray(courseKey)){
+        courseKey.forEach((cKey) => {
+          if (filter.includes(cKey)) {
+            isHidden = false;
+          }
+        })
+      }
+
+      else if (filter.includes(courseKey)) {
         isHidden = false;
         break;
       }
@@ -101,9 +110,9 @@ async function handleChange(value) {
 
   data.forEach((course) => {    
     isCourse(course.courseType, keysChecked.courseType, course)
-    isCourse(course.difficultyLevel, keysChecked.difficultyLevel, course)
     isCourse(course.macroArea, keysChecked.macroArea, course)
     isCourse(course.schoolarshipLevel, keysChecked.schoolarshipLevel, course)
+    isCourse(course.careerObjective, keysChecked.careerObjective, course)
   })
 
   const filteredData = data.filter((course) => !hiddenCourse.includes(course))
