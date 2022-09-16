@@ -1,35 +1,96 @@
 .courses_container{
-  margin: 0 2rem;
   max-width: 100vw;
 }
 
-.courses_container ul{
+.courses_container section{
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  gap: 2rem;
+  gap: 32px;
+  justify-content: center;
 }
 
-.courses_container ul li{
-  display: flex;
+.courses_container section .course-card {
+  display: block;
   flex-direction: column;
   height: auto;
-  width: 16rem;
-  background-color: whitesmoke;
-  border: 1px solid black;
+  width: 386px;
+  background-color: #ffffff;
   padding: 1.5rem 2rem;
-  border-radius: 0.4rem;
+  border-radius: 23px;
   align-items: flex-start;
+  position: relative;
+  height: 631px;
 }
 
+.courses_container section .course-card .course-card-info {
+  margin-top: 230px;
+}
 
-.courses_container ul li .schoolarshipLevel{
+.courses_container section .course-card .course-card-info h2 {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 26px;
+  margin-top: 16px;
+}
+
+.courses_container section .course-card .course-card-info .title_course .underscore {
+  color: #18CA00;
+}
+
+.courses_container section .course-card .course-card-info p {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.courses_container section .course-card .course-card-info a {
+  border-radius: 32px;
+  padding: 12px 62px;
+  background: linear-gradient(90deg, #05C900 2.58%, #ADD600 110.57%);
+  text-decoration: none;
+  color: #090909;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  transition: all 0.2s ease;
+}
+
+.courses_container section .course-card .course-card-info a:hover {
+  background: linear-gradient(90deg, #ADD600 110.57%, #05C900 2.58%);
+}
+
+.courses_container #course_container .course-card img {
+  width: 100%;
+  border-top-left-radius: 23px;
+  border-top-right-radius: 23px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.courses_container section .course-card .course-card-info .course-type {
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+/* .courses_container section .course-card .schoolarshipLevel{
   width: fit-content;
   background-color: rgba(0, 0, 0, 0.4);
   font-weight: 600;
   opacity: 60%;
-  padding: 0.2rem 0.4rem;
+  padding: 20px;
   border-radius: 0.4rem;
   margin-top: 2rem;
   align-self: flex-end;
-}
+} */

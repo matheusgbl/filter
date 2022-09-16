@@ -1,0 +1,88 @@
+@media (max-width: 768px) {
+  /* Filters */
+  .filters-container .filters-list {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 425px) {
+  /* Search */
+  .search label {
+    width: 230px;
+  }
+
+  .search .search-input #search {
+    height: 42px;
+    font-size: 17px;
+  }
+
+  .search .search-input .btn-search {
+    height: 42px;
+    margin-left: -45px;
+  }
+
+  .search .search-input img {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Filters */
+  .filters-container .filters-list {
+    flex-direction: column;
+    max-width: min-content;
+  }
+
+  .filter .filter_select {
+    width: 100%;
+  }
+
+  .filter .filter_select .select__input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .filter .filter_select .select__input .arrow {
+    position: absolute;
+    right: 20px;
+  }
+
+  /* Card */
+  .courses_container section .course-card {
+    padding: 40px 18px;
+    height: 100%; 
+  }
+
+  .courses_container section .course-card .course-card-info {
+    margin-top: 200px;
+  }
+
+  .courses_container section .course-card .course-card-info p {
+    margin-bottom: 45px;
+    overflow: hidden;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  .courses_container section .course-card .course-card-info a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .courses_container section .course-card .course-card-info h2 {
+    margin: 15px 0 24px 0;
+  }
+
+  .courses_container section .course-card .course-card-info .link-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .courses_container section .course-card .course-card-info .course-type {
+    margin-bottom: 15px;
+  }
+}

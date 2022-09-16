@@ -1,11 +1,27 @@
-.filters{
+.filters-container {
+  width: 100%;
+}
+
+.filters-container h2 {
+  color: #ffffff;
+  font-size: 27px;
+}
+
+.filters-list {
   max-width: 100vw;
   height: auto;
   display: flex;
   justify-content: start;
+  flex-direction: row;
   padding: 2rem 0;
   gap: 1rem;
-  margin: 0 2rem;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+.filter {
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 
 .filter .filter_select {
@@ -13,29 +29,27 @@
 }
 
 .filter .filter_select .select__input {
-  box-shadow: 0 0 0 3px transparent;
-  border: 2px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   padding: 1rem;
-  border-radius: 0.4rem;
+  border-radius: 10px;
   width: fit-content;
   cursor: pointer;
   max-width: 20rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
-}
-
-.filter .filter_select .select__input:hover {
-  border-color: black;
+  border: none;
+  outline: none;
 }
 
 .filter .filter_select .select__input:focus {
-  box-shadow: 0 0 0 3px rgb(125, 213, 0);
+  box-shadow: 0 0 0 2px rgb(125, 213, 0);
   border-color: transparent;
 }
 
 .filter .filter_select .select__input span {
   margin-right: 3rem;
+  color: #000000;
 }
 
 /* CHANGE IN PROD - START */

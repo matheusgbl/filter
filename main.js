@@ -34,21 +34,46 @@ let data = []
 let searchKey = ''
 
 function createCourseElement(course) {
-  const container = document.createElement("li")
-  const title = document.createElement("h1")
-  const schoolarshipLevel = document.createElement("span")
+  const container = document.createElement("div")
+  const courseImg = document.createElement("img")
+  const cardInfo = document.createElement("div")
+  const cardInfoText = document.createElement("p")
+  const courseType = document.createElement("p")
+  const title = document.createElement("h2")
+  const underscore = document.createElement("span")
+  const linkDiv = document.createElement("div")
+  const courseLink = document.createElement("a")
 
 
   title.classList.add('title_course')
-  schoolarshipLevel.classList.add('schoolarshipLevel')
+  courseType.classList.add('course-type')
+  underscore.classList.add('underscore')
   container.setAttribute('data-id', 'course-' + course.id)
-  container.style.display = 'block'
-  
-  title.textContent = course.title
-  schoolarshipLevel.textContent = course.schoolarshipLevel
+  container.classList.add('course-card')
+  linkDiv.classList.add('link-div')
+  cardInfo.classList.add('course-card-info')
+  courseImg.setAttribute('src', './tech.jpg')
+  cardInfoText.innerHTML = `
+  Faça o MBA em Inovação e Gestão Ágil e prepare-se para se tornar um 
+  líder de inovação e transformação ágil. 
+  `
+  courseLink.innerHTML = "Saiba mais"
+  courseLink.setAttribute("href", "https://www.xpeducacao.com.br/")
 
-  container.appendChild(title)
-  container.appendChild(schoolarshipLevel)
+  underscore.textContent = "_"
+  
+  title.textContent = course.title.trim()
+  courseType.textContent = course.courseType
+
+  title.insertAdjacentElement("beforeend", underscore)
+  container.appendChild(cardInfo)
+  container.appendChild(courseImg)
+  cardInfo.appendChild(courseType)
+  cardInfo.appendChild(title)
+  cardInfo.appendChild(cardInfoText)
+  cardInfo.appendChild(linkDiv)
+  cardInfo.appendChild(courseLink)
+  linkDiv.appendChild(courseLink)
   courseContainer.appendChild(container)
 }
 
@@ -158,7 +183,6 @@ selectsContainer.forEach((selectContainer) => {
 })
 
 handleChange();
-
 
 // ---------------------------- SEARCH COURSE AREA------------------------- //
 

@@ -5,6 +5,7 @@
   text-overflow: ellipsis;
   overflow-x: hidden;
   margin: 0.5rem 0;
+  color: #000000;
 }
 .filter .filter_select .select__modal label input {
   position: absolute;
